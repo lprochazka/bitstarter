@@ -7,6 +7,11 @@ app.get('/', function(request, response) {
   response.send(fileData.toString());
 });
 
+app.configure(function () {
+    app.use('/evelo', express.static(__dirname + '/media'));
+    app.use(express.static(__dirname + '/'));
+})
+
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
   console.log("Listening on " + port);
